@@ -1,159 +1,98 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Koleksi Trimcard</title>
-  <style>
-    :root {
-      --text-color: #333;
-      --hover-color: #ffffff;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contoh Responsive Web</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+
+  header {
+    background-color: #4CAF50;
+    color: white;
+    padding: 20px;
+    text-align: center;
+  }
+
+  nav {
+    display: flex;
+    justify-content: center;
+    background-color: #333;
+  }
+
+  nav a {
+    color: white;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  nav a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+  }
+
+  .card {
+    background-color: #f4f4f4;
+    margin: 10px;
+    padding: 20px;
+    flex: 1 1 200px; /* fleksibel, minimal 200px */
+    box-shadow: 0 0 5px rgba(0,0,0,0.2);
+  }
+
+  footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 10px;
+  }
+
+  /* Media Queries untuk HP */
+  @media screen and (max-width: 600px) {
+    nav {
+      flex-direction: column;
     }
 
-    * {
-      box-sizing: border-box;
+    .card {
+      flex: 1 1 100%; /* kartu full lebar */
     }
-
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #f0f2f5;
-      color: var(--text-color);
-      margin: 0;
-      padding: 0;
-    }
-
-    header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      background-color: #ffffff;
-      padding: 20px 40px;
-      border-bottom: 2px solid #ddd;
-    }
-
-    header h1 {
-      font-size: 28px;
-      color: #0066cc;
-      margin: 0;
-    }
-
-    header img {
-      height: 60px;
-    }
-
-    .container {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-
-    .buyer-section {
-      padding: 20px;
-      border-radius: 12px;
-      margin-bottom: 20px;
-      color: #fff;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-    }
-
-    .hanum     { background-color: #6ca0dc; }
-    .sansan    { background-color: #88c999; }
-    .kurabo    { background-color: #f7b267; }
-    .tunhong   { background-color: #e07a5f; }
-    .gistex    { background-color: #9d79bc; }
-    .teratai   { background-color: #4bb3fd; }
-
-    h2 {
-      margin-top: 0;
-      font-size: 22px;
-    }
-
-    ul {
-      list-style: none;
-      padding-left: 0;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    li {
-      margin: 0;
-    }
-
-    a {
-      text-decoration: none;
-      background-color: rgba(255, 255, 255, 0.9);
-      color: #000;
-      padding: 10px 15px;
-      border-radius: 8px;
-      font-size: 15px;
-      transition: background-color 0.3s ease;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1);
-    }
-
-    a:hover {
-      background-color: #ffffff;
-      color: #000;
-    }
-
-    @media (max-width: 600px) {
-      header {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 10px;
-      }
-
-      ul {
-        flex-direction: column;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 <body>
 
-  <header>
-    <h1>Trimcard Produksi</h1>
-    <img src="logo.png" alt="Logo Perusahaan">
-  </header>
+<header>
+  <h1>Contoh Web Responsive</h1>
+  <p>Tampilan menyesuaikan desktop & HP</p>
+</header>
 
-  <div class="container">
+<nav>
+  <a href="#">Home</a>
+  <a href="#">Produk</a>
+  <a href="#">Tentang</a>
+  <a href="#">Kontak</a>
+</nav>
 
-    <div class="buyer-section hanum">
-      <h2>Hanum</h2>
-      <ul>
-        <li><a href="trimcards/hanum/Koko%20Bayyinah.pdf" target="_blank">Koko%20Bayyinah</a></li>
-        <li><a href="trimcards/hanum/Koko%20Miqdad.pdf" target="_blank">Koko%20Miqdad</a></li>
-        <li><a href="trimcards/hanum/Koko%20Nayyan.pdf" target="_blank">Koko%20Nayyan</a></li>
-      </ul>
-    </div>
+<main>
+  <div class="card">Konten 1</div>
+  <div class="card">Konten 2</div>
+  <div class="card">Konten 3</div>
+  <div class="card">Konten 4</div>
+</main>
 
-    <div class="buyer-section sansan">
-      <h2>Sansan</h2>
-      <ul>
-        <li><a href="trimcards/sansan/Malika AI006.pdf" target="_blank">Malika AI006</a></li>
-        <li><a href="trimcards/sansan/Harry HM069.pdf" target="_blank">Harry HM069</a></li>
-      </ul>
-    </div>
-
-    <div class="buyer-section kurabo">
-      <h2>Kurabo</h2>
-      <ul></ul>
-    </div>
-
-    <div class="buyer-section tunhong">
-      <h2>Tunhong</h2>
-      <ul></ul>
-    </div>
-
-    <div class="buyer-section gistex">
-      <h2>Gistex</h2>
-      <ul></ul>
-    </div>
-
-    <div class="buyer-section teratai">
-      <h2>Teratai</h2>
-      <ul></ul>
-    </div>
-
-  </div>
+<footer>
+  &copy; 2025 Contoh Responsive Web
+</footer>
 
 </body>
 </html>
