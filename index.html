@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Form Non-Conforming Report (NCR) - ISO 9001</title>
+  <title>Form Non-Conforming Report (NCR)</title>
   <style>
     :root{--bg:#f4f6f8;--card:#ffffff;--accent:#0b5ed7;--muted:#6b7280}
     html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial}
@@ -106,8 +106,8 @@
 <body>
   <div class="container">
     <div class="card">
-      <h1>Form Non-Conforming Report (NCR) – Gudang Bahan Baku</h1>
-      <p class="lead">Form NCR khusus gudang bahan baku: ketidaksesuaian saat penerimaan, penyimpanan, identifikasi, penanganan, atau pengeluaran material.</p>
+      <h1>Form Non-Conforming Report (NCR)</h1>
+      <p class="lead">Form NCR: ketidaksesuaian saat penerimaan, penyimpanan, identifikasi, penanganan, atau pengeluaran material.</p>
 
       <form id="ncrForm" autocomplete="off">
         <div class="grid">
@@ -123,17 +123,12 @@
           </div>
 
           <div>
-            <label for="reporter">Pelapor / Penggagas</label>
-            <input type="text" id="reporter" name="reporter" placeholder="Nama pelapor" required />
-          </div>
-
-          <div>
             <label for="department">Departemen / Area</label>
             <input type="text" id="department" name="department" placeholder="Departemen terkait" required />
           </div>
 
           <div>
-            <label for="material_name">Nama Bahan Baku</label>
+            <label for="material_name">Nama Material</label>
             <input type="text" id="material_name" name="material_name" placeholder="mis. Cotton 30s, Polyester" required />
           </div>
 
@@ -150,11 +145,6 @@
           <div class="full">
             <label for="immediate_action">Tindakan Segera (Containment)</label>
             <textarea id="immediate_action" name="immediate_action" required></textarea>
-          </div>
-
-          <div>
-            <label for="batch_no">Nomor Batch / Lot</label>
-            <input type="text" id="batch_no" name="batch_no" required />
           </div>
 
           <div>
