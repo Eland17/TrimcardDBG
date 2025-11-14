@@ -1,98 +1,274 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contoh Responsive Web</title>
-<style>
-  body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-  }
-
-  header {
-    background-color: #4CAF50;
-    color: white;
-    padding: 20px;
-    text-align: center;
-  }
-
-  nav {
-    display: flex;
-    justify-content: center;
-    background-color: #333;
-  }
-
-  nav a {
-    color: white;
-    padding: 14px 20px;
-    text-decoration: none;
-    text-align: center;
-  }
-
-  nav a:hover {
-    background-color: #ddd;
-    color: black;
-  }
-
-  main {
-    display: flex;
-    flex-wrap: wrap;
-    padding: 20px;
-  }
-
-  .card {
-    background-color: #f4f4f4;
-    margin: 10px;
-    padding: 20px;
-    flex: 1 1 200px; /* fleksibel, minimal 200px */
-    box-shadow: 0 0 5px rgba(0,0,0,0.2);
-  }
-
-  footer {
-    background-color: #333;
-    color: white;
-    text-align: center;
-    padding: 10px;
-  }
-
-  /* Media Queries untuk HP */
-  @media screen and (max-width: 600px) {
-    nav {
-      flex-direction: column;
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Form Non-Conforming Report (NCR) - ISO 9001</title>
+  <style>
+    :root{--bg:#f4f6f8;--card:#ffffff;--accent:#0b5ed7;--muted:#6b7280}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial}
+    body{background:var(--bg);padding:28px;box-sizing:border-box}
+    .container{max-width:1000px;margin:0 auto}
+    .card{background:var(--card);border-radius:10px;padding:20px;box-shadow:0 6px 20px rgba(13,38,76,0.08)}
+    h1{margin:0 0 12px;font-size:20px}
+    p.lead{margin:0 0 18px;color:var(--muted)}
+    form .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+    label{display:block;font-size:13px;margin-bottom:6px;color:#111827}
+    input[type=text], input[type=date], input[type=datetime-local], select, textarea{width:100%;padding:10px;border:1px solid #e6e9ee;border-radius:6px;font-size:14px}
+    textarea{min-height:100px;resize:vertical}
+    .full{grid-column:1 / -1}
+    .muted{color:var(--muted);font-size:13px}
+    .actions{display:flex;gap:8px;justify-content:flex-end;margin-top:16px}
+    button{padding:10px 14px;border-radius:8px;border:0;background:var(--accent);color:white;font-weight:600;cursor:pointer}
+    .btn-secondary{background:#6b7280}
+    .small{padding:8px 10px;font-size:13px}
+    .section{border-top:1px dashed #e6e9ee;padding-top:14px;margin-top:14px}
+    .two-col{display:flex;gap:12px}
+    .sig{border:1px dashed #d1d5db;border-radius:6px;padding:12px;text-align:center;background:#fbfbfc}
+    .file-list{margin-top:8px;font-size:13px}
+    .status{display:inline-block;padding:6px 10px;border-radius:999px;font-size:13px}
+    @media (max-width:720px){
+      body{padding:8px}
+      .container{width:100%;margin:0}
+      .card{padding:12px;border-radius:8px}
+      form .grid{display:flex;flex-direction:column;gap:12px;width:100%}
+      .grid > div, .grid > .full{width:100%;grid-column:1 / -1}
+      label{font-size:14px;margin-bottom:4px}
+      input[type=text], input[type=date], input[type=datetime-local], select, textarea{
+        width:100%;padding:10px;font-size:14px;border-radius:6px
+      }
+      .two-col{flex-direction:column;gap:12px;width:100%}
+      .sig{width:100%}
+      .actions{flex-direction:column-reverse;align-items:stretch;margin-top:18px;width:100%}
+      button{width:100%;padding:12px;font-size:15px;border-radius:8px}
     }
 
-    .card {
-      flex: 1 1 100%; /* kartu full lebar */
+    /* Tambahan khusus Xiaomi Redmi Note 7 (viewport ± 393px) */
+    @media (max-width:400px){
+      body{padding:6px}
+      .card{padding:10px}
+      form .grid{gap:10px}
+      input, select, textarea{font-size:13.5px;padding:10px}
+      label{font-size:13px}
+      h1{font-size:17px}
+      button{font-size:14px;padding:11px}
     }
-  }
-</style>
+      .container{width:100%;margin:0}
+      .card{padding:14px;border-radius:8px}
+      form .grid{display:flex;flex-direction:column;gap:14px;width:100%}
+      .grid > div, .grid > .full{width:100%;grid-column:1 / -1}
+      label{font-size:14px;margin-bottom:4px}
+      input[type=text], input[type=date], input[type=datetime-local], select, textarea{
+        width:100%;padding:12px;font-size:15px;border-radius:6px
+      }
+      .two-col{flex-direction:column;gap:14px;width:100%}
+      .sig{width:100%}
+      .actions{flex-direction:column-reverse;align-items:stretch;margin-top:20px;width:100%}
+      button{width:100%;padding:12px;font-size:15px;border-radius:8px}
+    }
+      form .grid{grid-template-columns:1fr;gap:10px}
+      input[type=text], input[type=date], input[type=datetime-local], select, textarea{font-size:15px;padding:12px}
+      h1{font-size:18px}
+      .two-col{flex-direction:column}
+      .sig{width:100%}
+      .actions{flex-direction:column-reverse;align-items:stretch;margin-top:20px}
+    }.actions{flex-direction:column-reverse;align-items:stretch}}
+    /* print styles */
+    @media print{body{background:white;padding:0} .container{max-width:100%} .actions, .no-print{display:none} .card{box-shadow:none;border-radius:0}}
+  </style>
 </head>
 <body>
+  <div class="container">
+    <div class="card">
+      <h1>Form Non-Conforming Report (NCR) – Gudang Bahan Baku</h1>
+      <p class="lead">Form NCR khusus gudang bahan baku: ketidaksesuaian saat penerimaan, penyimpanan, identifikasi, penanganan, atau pengeluaran material.</p>
 
-<header>
-  <h1>Contoh Web Responsive</h1>
-  <p>Tampilan menyesuaikan desktop & HP</p>
-</header>
+      <form id="ncrForm" autocomplete="off">
+        <div class="grid">
+          <div>
+            <label for="ncr_number">Nomor NCR</label>
+            <input type="text" id="ncr_number" name="ncr_number" placeholder="contoh: NCR-2025-001" required />
+          </div>
+          <div>
+            <label for="date_report">Tanggal Laporan</label>
+            <input type="date" id="date_report" name="date_report" required />
+          </div>
 
-<nav>
-  <a href="#">Home</a>
-  <a href="#">Produk</a>
-  <a href="#">Tentang</a>
-  <a href="#">Kontak</a>
-</nav>
+          <div>
+            <label for="reporter">Pelapor / Penggagas</label>
+            <input type="text" id="reporter" name="reporter" placeholder="Nama pelapor" required />
+          </div>
+          <div>
+            <label for="department">Departemen / Area</label>
+            <input type="text" id="department" name="department" placeholder="Departemen terkait" required />
+          </div>
 
-<main>
-  <div class="card">Konten 1</div>
-  <div class="card">Konten 2</div>
-  <div class="card">Konten 3</div>
-  <div class="card">Konten 4</div>
-</main>
+          <div>
+            <label for="material_name">Nama Bahan Baku</label>
+            <input type="text" id="material_name" name="material_name" placeholder="mis. Cotton 30s, Polyester, Dyestuff" required />
+          </div>
+          <div>
+            <label for="supplier">Supplier / Vendor</label>
+            <input type="text" id="supplier" name="supplier" placeholder="Nama supplier" required />
+          </div>
 
-<footer>
-  &copy; 2025 Contoh Responsive Web
-</footer>
+          <div class="full">
+            <label for="description">Deskripsi Ketidaksesuaian</label>
+            <textarea id="description" name="description" placeholder="Contoh: Label batch tidak sesuai PO, berat kurang, kemasan rusak, kontaminasi, salah kualitas." required></textarea>
+          </div>
 
+          <div class="full">
+            <label for="immediate_action">Tindakan Segera (Containment)</label>
+            <textarea id="immediate_action" name="immediate_action" placeholder="Tindakan yang diambil untuk menahan penyebaran/risk" required></textarea>
+          </div>
+
+          <div>
+            <label for="batch_no">Nomor Batch / Lot</label>
+            <input type="text" id="batch_no" name="batch_no" placeholder="mis. LOT-2025-001" required />
+          </div>
+          <div>
+            <label for="qty_received">Jumlah Diterima</label>
+            <input type="text" id="qty_received" name="qty_received" placeholder="mis. 500 kg / 20 roll" required />
+          </div>
+          <div>
+            <label for="evidence">Bukti (ref / file)</label>
+            <input type="file" id="evidence" name="evidence" multiple />
+            <div id="fileList" class="file-list muted"></div>
+          </div>
+
+          <div class="full section">
+            <label for="root_cause">Analisis Akar Masalah (Gudang Bahan Baku)</label>
+            <textarea id="root_cause" name="root_cause" placeholder="Contoh: Salah picking supplier, kesalahan QC saat penerimaan, penyimpanan tidak sesuai, salah label, SOP tidak diikuti." required></textarea>
+          </div>
+
+          <div>
+            <label for="corrective_action">Rencana Tindakan Korektif</label>
+            <textarea id="corrective_action" name="corrective_action" placeholder="Langkah perbaikan permanen yang akan diambil, termasuk langkah pencegahan" required></textarea>
+          </div>
+          <div>
+            <label for="responsible">Penanggung Jawab</label>
+            <input type="text" id="responsible" name="responsible" placeholder="Nama PIC untuk tindakan korektif" required />
+          </div>
+
+          <div>
+            <label for="target_date">Target Penyelesaian</label>
+            <input type="date" id="target_date" name="target_date" required />
+          </div>
+          <div>
+            <label for="status">Status</label>
+            <select id="status" name="status">
+              <option>Open</option>
+              <option>In Progress</option>
+              <option>Completed</option>
+              <option>Verified</option>
+              <option>Closed</option>
+            </select>
+          </div>
+
+          <div class="full section">
+            <label for="verification">Verifikasi & Validasi</label>
+            <textarea id="verification" name="verification" placeholder="Hasil verifikasi setelah tindakan korektif (tanggal, bukti, persetujuan)" ></textarea>
+          </div>
+
+          <div class="full">
+            <label>Sign-off</label>
+            <div class="two-col">
+              <div class="sig" style="flex:1">
+                <div style="font-size:13px;color:var(--muted)">Diverifikasi Oleh</div>
+                <div style="margin-top:10px"><input type="text" id="verified_by" name="verified_by" placeholder="Nama verifier" /></div>
+                <div style="margin-top:8px"><input type="date" id="verified_date" name="verified_date" /></div>
+              </div>
+              <div class="sig" style="flex:1">
+                <div style="font-size:13px;color:var(--muted)">Disetujui Oleh</div>
+                <div style="margin-top:10px"><input type="text" id="approved_by" name="approved_by" placeholder="Nama approver" /></div>
+                <div style="margin-top:8px"><input type="date" id="approved_date" name="approved_date" /></div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="actions no-print">
+          <button type="button" id="saveBtn" class="small">Simpan Draf</button>
+          <button type="button" id="printBtn" class="small">Cetak / Print</button>
+          <button type="submit" id="submitBtn" class="small">Submit NCR</button>
+        </div>
+      </form>
+
+      <div style="margin-top:12px;color:var(--muted);font-size:13px">Catatan: Form ini adalah template. Untuk kepatuhan ISO 9001, pastikan proses pengendalian dokumen, rekaman tindakan korektif, dan penutupan diterapkan sesuai prosedur internal.</div>
+    </div>
+  </div>
+
+  <script>
+    // Simple client-side handling: preview files, save draft to localStorage, and basic validation
+    const form = document.getElementById('ncrForm');
+    const fileInput = document.getElementById('evidence');
+    const fileList = document.getElementById('fileList');
+    const saveBtn = document.getElementById('saveBtn');
+    const printBtn = document.getElementById('printBtn');
+
+    fileInput.addEventListener('change', ()=>{
+      const names = Array.from(fileInput.files).map(f=>f.name);
+      fileList.textContent = names.length ? names.join(', ') : 'Tidak ada file terlampir';
+    });
+
+    // Save draft (localStorage)
+    saveBtn.addEventListener('click', ()=>{
+      const data = new FormData(form);
+      const obj = {};
+      data.forEach((v,k)=>{ obj[k]=v instanceof File ? v.name : v; });
+      obj._savedAt = new Date().toISOString();
+      localStorage.setItem('ncr_draft', JSON.stringify(obj));
+      alert('Draf tersimpan di browser (localStorage).');
+    });
+
+    // Load draft if ada
+    window.addEventListener('load', ()=>{
+      try{
+        const raw = localStorage.getItem('ncr_draft');
+        if(raw){
+          const obj = JSON.parse(raw);
+          Object.keys(obj).forEach(k=>{
+            const el = document.querySelector('[name="'+k+'"]');
+            if(el && !(el.type === 'file')) el.value = obj[k];
+          });
+          if(obj.evidence) fileList.textContent = obj.evidence;
+        }
+      }catch(e){console.warn(e)}
+    });
+
+    // Print
+    printBtn.addEventListener('click', ()=> window.print());
+
+    // Submit handler
+    form.addEventListener('submit', (e)=>{
+      e.preventDefault();
+      // basic required checks
+      const required = ['ncr_number','date_report','reporter','department','description','immediate_action','root_cause','corrective_action','responsible','target_date'];
+      for(const id of required){
+        const el = document.getElementById(id);
+        if(!el.value.trim()){
+          alert('Field wajib belum terisi: ' + (el.previousElementSibling ? el.previousElementSibling.textContent : id));
+          el.focus();
+          return;
+        }
+      }
+
+      // prepare payload (client-side demo only). In production send to backend or simpan ke sistem QM
+      const payload = {};
+      new FormData(form).forEach((v,k)=> payload[k]= v instanceof File ? v.name : v);
+      payload.submittedAt = new Date().toISOString();
+
+      // demo: simpan ke localStorage list
+      const listRaw = localStorage.getItem('ncr_list') || '[]';
+      const list = JSON.parse(listRaw);
+      list.push(payload);
+      localStorage.setItem('ncr_list', JSON.stringify(list));
+
+      alert('NCR berhasil disimpan (demo). Untuk integrasi nyata, kirim payload ke server atau simpan pada sistem manajemen kualitas Anda.');
+      form.reset();
+      fileList.textContent = '';
+    });
+  </script>
 </body>
 </html>
