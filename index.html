@@ -7,63 +7,83 @@
   <style>
     :root{--bg:#f4f6f8;--card:#ffffff;--accent:#0b5ed7;--muted:#6b7280}
     html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial}
-    body{background:var(--bg);padding:28px;box-sizing:border-box}
-    .container{max-width:1000px;margin:0 auto}
+    
+    /* 🌟 FORM DITENGAH UNTUK DESKTOP */
+    body{
+      background:var(--bg);
+      display:flex;
+      justify-content:center;
+      align-items:flex-start;   /* tetap sedikit dari atas */
+      padding:40px 20px;
+      box-sizing:border-box;
+    }
+
+    .container{max-width:1000px;width:100%}
+
     .card{
       background:white;
       padding:16px;
       border-radius:10px;
-      max-width:100% !important;
-      width:100% !important;
+      width:100%;
       margin:0 auto;
       box-sizing:border-box;
     }
+
     h1{margin:0 0 12px;font-size:20px}
     p.lead{margin:0 0 18px;color:var(--muted)}
+
     form .grid{
       display:flex;
       flex-direction:column;
       gap:14px;
-      width:100% !important;
-      max-width:100% !important;
+      width:100%;
     }
+
     label{display:block;font-size:13px;margin-bottom:6px;color:#111827}
-    input[type=text], input[type=date], input[type=datetime-local], select, textarea{
-        width:100% !important;
-        max-width:100% !important;
-        box-sizing:border-box;
+
+    input[type=text], 
+    input[type=date], 
+    input[type=datetime-local], 
+    select, textarea{
+        width:100%;
         padding:12px;
         font-size:15px;
-        border-radius:6px:6px;font-size:14px}
+        border-radius:6px;
+        box-sizing:border-box;
+    }
+
     textarea{min-height:100px;resize:vertical}
     .full{grid-column:1 / -1}
     .muted{color:var(--muted);font-size:13px}
+
     .actions{display:flex;gap:8px;justify-content:flex-end;margin-top:16px}
     button{padding:10px 14px;border-radius:8px;border:0;background:var(--accent);color:white;font-weight:600;cursor:pointer}
     .btn-secondary{background:#6b7280}
     .small{padding:8px 10px;font-size:13px}
+
     .section{border-top:1px dashed #e6e9ee;padding-top:14px;margin-top:14px}
     .two-col{display:flex;gap:12px}
+
     .sig{border:1px dashed #d1d5db;border-radius:6px;padding:12px;text-align:center;background:#fbfbfc}
+
     .file-list{margin-top:8px;font-size:13px}
+
     .status{display:inline-block;padding:6px 10px;border-radius:999px;font-size:13px}
+
+    /* MOBILE ≤ 720px */
     @media (max-width:720px){
-      body{padding:8px}
-      .container{width:100%;margin:0}
+      body{padding:10px;display:block}
       .card{padding:12px;border-radius:8px}
-      form .grid{display:flex;flex-direction:column;gap:12px;width:100%}
-      .grid > div, .grid > .full{width:100%;grid-column:1 / -1}
-      label{font-size:14px;margin-bottom:4px}
-      input[type=text], input[type=date], input[type=datetime-local], select, textarea{
-        width:100%;padding:10px;font-size:14px;border-radius:6px
-      }
-      .two-col{flex-direction:column;gap:12px;width:100%}
+      form .grid{gap:12px}
+      label{font-size:14px}
+      input, select, textarea{padding:10px;font-size:14px}
+      .two-col{flex-direction:column}
       .sig{width:100%}
-      .actions{flex-direction:column-reverse;align-items:stretch;margin-top:18px;width:100%}
-      button{width:100%;padding:12px;font-size:15px;border-radius:8px}
+      .actions{flex-direction:column-reverse;align-items:stretch;margin-top:18px}
+      button{width:100%;padding:12px;font-size:15px}
     }
 
-    /* Tambahan khusus Xiaomi Redmi Note 7 (viewport ± 393px) */
+    /* Xiaomi viewport fix */
     @media (max-width:400px){
       body{padding:6px}
       .card{padding:10px}
@@ -73,30 +93,16 @@
       h1{font-size:17px}
       button{font-size:14px;padding:11px}
     }
-      .container{width:100%;margin:0}
-      .card{padding:14px;border-radius:8px}
-      form .grid{display:flex;flex-direction:column;gap:14px;width:100%}
-      .grid > div, .grid > .full{width:100%;grid-column:1 / -1}
-      label{font-size:14px;margin-bottom:4px}
-      input[type=text], input[type=date], input[type=datetime-local], select, textarea{
-        width:100%;padding:12px;font-size:15px;border-radius:6px
-      }
-      .two-col{flex-direction:column;gap:14px;width:100%}
-      .sig{width:100%}
-      .actions{flex-direction:column-reverse;align-items:stretch;margin-top:20px;width:100%}
-      button{width:100%;padding:12px;font-size:15px;border-radius:8px}
+
+    /* PRINT */
+    @media print{
+      body{background:white;padding:0;display:block}
+      .actions, .no-print{display:none}
+      .card{box-shadow:none;border-radius:0}
     }
-      form .grid{grid-template-columns:1fr;gap:10px}
-      input[type=text], input[type=date], input[type=datetime-local], select, textarea{font-size:15px;padding:12px}
-      h1{font-size:18px}
-      .two-col{flex-direction:column}
-      .sig{width:100%}
-      .actions{flex-direction:column-reverse;align-items:stretch;margin-top:20px}
-    }.actions{flex-direction:column-reverse;align-items:stretch}}
-    /* print styles */
-    @media print{body{background:white;padding:0} .container{max-width:100%} .actions, .no-print{display:none} .card{box-shadow:none;border-radius:0}}
   </style>
 </head>
+
 <body>
   <div class="container">
     <div class="card">
@@ -105,10 +111,12 @@
 
       <form id="ncrForm" autocomplete="off">
         <div class="grid">
+
           <div>
             <label for="ncr_number">Nomor NCR</label>
             <input type="text" id="ncr_number" name="ncr_number" placeholder="contoh: NCR-2025-001" required />
           </div>
+
           <div>
             <label for="date_report">Tanggal Laporan</label>
             <input type="date" id="date_report" name="date_report" required />
@@ -118,6 +126,7 @@
             <label for="reporter">Pelapor / Penggagas</label>
             <input type="text" id="reporter" name="reporter" placeholder="Nama pelapor" required />
           </div>
+
           <div>
             <label for="department">Departemen / Area</label>
             <input type="text" id="department" name="department" placeholder="Departemen terkait" required />
@@ -125,8 +134,9 @@
 
           <div>
             <label for="material_name">Nama Bahan Baku</label>
-            <input type="text" id="material_name" name="material_name" placeholder="mis. Cotton 30s, Polyester, Dyestuff" required />
+            <input type="text" id="material_name" name="material_name" placeholder="mis. Cotton 30s, Polyester" required />
           </div>
+
           <div>
             <label for="supplier">Supplier / Vendor</label>
             <input type="text" id="supplier" name="supplier" placeholder="Nama supplier" required />
@@ -134,22 +144,24 @@
 
           <div class="full">
             <label for="description">Deskripsi Ketidaksesuaian</label>
-            <textarea id="description" name="description" placeholder="Contoh: Label batch tidak sesuai PO, berat kurang, kemasan rusak, kontaminasi, salah kualitas." required></textarea>
+            <textarea id="description" name="description" required></textarea>
           </div>
 
           <div class="full">
             <label for="immediate_action">Tindakan Segera (Containment)</label>
-            <textarea id="immediate_action" name="immediate_action" placeholder="Tindakan yang diambil untuk menahan penyebaran/risk" required></textarea>
+            <textarea id="immediate_action" name="immediate_action" required></textarea>
           </div>
 
           <div>
             <label for="batch_no">Nomor Batch / Lot</label>
-            <input type="text" id="batch_no" name="batch_no" placeholder="mis. LOT-2025-001" required />
+            <input type="text" id="batch_no" name="batch_no" required />
           </div>
+
           <div>
             <label for="qty_received">Jumlah Diterima</label>
-            <input type="text" id="qty_received" name="qty_received" placeholder="mis. 500 kg / 20 roll" required />
+            <input type="text" id="qty_received" name="qty_received" required />
           </div>
+
           <div>
             <label for="evidence">Bukti (ref / file)</label>
             <input type="file" id="evidence" name="evidence" multiple />
@@ -157,23 +169,25 @@
           </div>
 
           <div class="full section">
-            <label for="root_cause">Analisis Akar Masalah (Gudang Bahan Baku)</label>
-            <textarea id="root_cause" name="root_cause" placeholder="Contoh: Salah picking supplier, kesalahan QC saat penerimaan, penyimpanan tidak sesuai, salah label, SOP tidak diikuti." required></textarea>
+            <label for="root_cause">Analisis Akar Masalah</label>
+            <textarea id="root_cause" name="root_cause" required></textarea>
           </div>
 
           <div>
             <label for="corrective_action">Rencana Tindakan Korektif</label>
-            <textarea id="corrective_action" name="corrective_action" placeholder="Langkah perbaikan permanen yang akan diambil, termasuk langkah pencegahan" required></textarea>
+            <textarea id="corrective_action" name="corrective_action" required></textarea>
           </div>
+
           <div>
             <label for="responsible">Penanggung Jawab</label>
-            <input type="text" id="responsible" name="responsible" placeholder="Nama PIC untuk tindakan korektif" required />
+            <input type="text" id="responsible" name="responsible" required />
           </div>
 
           <div>
             <label for="target_date">Target Penyelesaian</label>
             <input type="date" id="target_date" name="target_date" required />
           </div>
+
           <div>
             <label for="status">Status</label>
             <select id="status" name="status">
@@ -187,20 +201,20 @@
 
           <div class="full section">
             <label for="verification">Verifikasi & Validasi</label>
-            <textarea id="verification" name="verification" placeholder="Hasil verifikasi setelah tindakan korektif (tanggal, bukti, persetujuan)" ></textarea>
+            <textarea id="verification" name="verification"></textarea>
           </div>
 
           <div class="full">
             <label>Sign-off</label>
             <div class="two-col">
               <div class="sig" style="flex:1">
-                <div style="font-size:13px;color:var(--muted)">Diverifikasi Oleh</div>
-                <div style="margin-top:10px"><input type="text" id="verified_by" name="verified_by" placeholder="Nama verifier" /></div>
+                <div class="muted">Diverifikasi Oleh</div>
+                <div style="margin-top:10px"><input type="text" id="verified_by" name="verified_by" /></div>
                 <div style="margin-top:8px"><input type="date" id="verified_date" name="verified_date" /></div>
               </div>
               <div class="sig" style="flex:1">
-                <div style="font-size:13px;color:var(--muted)">Disetujui Oleh</div>
-                <div style="margin-top:10px"><input type="text" id="approved_by" name="approved_by" placeholder="Nama approver" /></div>
+                <div class="muted">Disetujui Oleh</div>
+                <div style="margin-top:10px"><input type="text" id="approved_by" name="approved_by" /></div>
                 <div style="margin-top:8px"><input type="date" id="approved_date" name="approved_date" /></div>
               </div>
             </div>
@@ -215,80 +229,74 @@
         </div>
       </form>
 
-      <div style="margin-top:12px;color:var(--muted);font-size:13px">Catatan: Form ini adalah template. Untuk kepatuhan ISO 9001, pastikan proses pengendalian dokumen, rekaman tindakan korektif, dan penutupan diterapkan sesuai prosedur internal.</div>
+      <div style="margin-top:12px;color:var(--muted);font-size:13px">
+        Catatan: Form ini adalah template untuk mendukung ISO 9001. Pastikan proses pengendalian dokumen dan tindakan korektif mengikuti prosedur internal.
+      </div>
     </div>
   </div>
 
-  <script>
-    // Simple client-side handling: preview files, save draft to localStorage, and basic validation
-    const form = document.getElementById('ncrForm');
-    const fileInput = document.getElementById('evidence');
-    const fileList = document.getElementById('fileList');
-    const saveBtn = document.getElementById('saveBtn');
-    const printBtn = document.getElementById('printBtn');
+<script>
+const form = document.getElementById('ncrForm');
+const fileInput = document.getElementById('evidence');
+const fileList = document.getElementById('fileList');
+const saveBtn = document.getElementById('saveBtn');
+const printBtn = document.getElementById('printBtn');
 
-    fileInput.addEventListener('change', ()=>{
-      const names = Array.from(fileInput.files).map(f=>f.name);
-      fileList.textContent = names.length ? names.join(', ') : 'Tidak ada file terlampir';
-    });
+fileInput.addEventListener('change', ()=>{
+  const names = Array.from(fileInput.files).map(f=>f.name);
+  fileList.textContent = names.length ? names.join(', ') : 'Tidak ada file terlampir';
+});
 
-    // Save draft (localStorage)
-    saveBtn.addEventListener('click', ()=>{
-      const data = new FormData(form);
-      const obj = {};
-      data.forEach((v,k)=>{ obj[k]=v instanceof File ? v.name : v; });
-      obj._savedAt = new Date().toISOString();
-      localStorage.setItem('ncr_draft', JSON.stringify(obj));
-      alert('Draf tersimpan di browser (localStorage).');
-    });
+saveBtn.addEventListener('click', ()=>{
+  const data = new FormData(form);
+  const obj = {};
+  data.forEach((v,k)=>{ obj[k]=v instanceof File ? v.name : v; });
+  obj._savedAt = new Date().toISOString();
+  localStorage.setItem('ncr_draft', JSON.stringify(obj));
+  alert('Draf tersimpan di browser.');
+});
 
-    // Load draft if ada
-    window.addEventListener('load', ()=>{
-      try{
-        const raw = localStorage.getItem('ncr_draft');
-        if(raw){
-          const obj = JSON.parse(raw);
-          Object.keys(obj).forEach(k=>{
-            const el = document.querySelector('[name="'+k+'"]');
-            if(el && !(el.type === 'file')) el.value = obj[k];
-          });
-          if(obj.evidence) fileList.textContent = obj.evidence;
-        }
-      }catch(e){console.warn(e)}
-    });
+window.addEventListener('load', ()=>{
+  try{
+    const raw = localStorage.getItem('ncr_draft');
+    if(raw){
+      const obj = JSON.parse(raw);
+      Object.keys(obj).forEach(k=>{
+        const el = document.querySelector('[name="'+k+'"]');
+        if(el && el.type !== 'file') el.value = obj[k];
+      });
+      if(obj.evidence) fileList.textContent = obj.evidence;
+    }
+  }catch(e){}
+});
 
-    // Print
-    printBtn.addEventListener('click', ()=> window.print());
+printBtn.addEventListener('click', ()=> window.print());
 
-    // Submit handler
-    form.addEventListener('submit', (e)=>{
-      e.preventDefault();
-      // basic required checks
-      const required = ['ncr_number','date_report','reporter','department','description','immediate_action','root_cause','corrective_action','responsible','target_date'];
-      for(const id of required){
-        const el = document.getElementById(id);
-        if(!el.value.trim()){
-          alert('Field wajib belum terisi: ' + (el.previousElementSibling ? el.previousElementSibling.textContent : id));
-          el.focus();
-          return;
-        }
-      }
+form.addEventListener('submit', (e)=>{
+  e.preventDefault();
+  const required = ['ncr_number','date_report','reporter','department','description','immediate_action','root_cause','corrective_action','responsible','target_date'];
+  for(const id of required){
+    const el = document.getElementById(id);
+    if(!el.value.trim()){
+      alert('Field wajib belum terisi: ' + el.previousElementSibling.textContent);
+      el.focus(); return;
+    }
+  }
 
-      // prepare payload (client-side demo only). In production send to backend or simpan ke sistem QM
-      const payload = {};
-      new FormData(form).forEach((v,k)=> payload[k]= v instanceof File ? v.name : v);
-      payload.submittedAt = new Date().toISOString();
+  const payload = {};
+  new FormData(form).forEach((v,k)=> payload[k]= v instanceof File ? v.name : v);
+  payload.submittedAt = new Date().toISOString();
 
-      // demo: simpan ke localStorage list
-      const listRaw = localStorage.getItem('ncr_list') || '[]';
-      const list = JSON.parse(listRaw);
-      list.push(payload);
-      localStorage.setItem('ncr_list', JSON.stringify(list));
+  const listRaw = localStorage.getItem('ncr_list') || '[]';
+  const list = JSON.parse(listRaw);
+  list.push(payload);
+  localStorage.setItem('ncr_list', JSON.stringify(list));
 
-      alert('NCR berhasil disimpan (demo). Untuk integrasi nyata, kirim payload ke server atau simpan pada sistem manajemen kualitas Anda.');
-      form.reset();
-      fileList.textContent = '';
-    });
-  </script>
+  alert('NCR berhasil disimpan.');
+  form.reset();
+  fileList.textContent = '';
+});
+</script>
+
 </body>
 </html>
