@@ -1,291 +1,165 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Form Non-Conforming Report (NCR)</title>
-  <style>
-    :root{--bg:#f4f6f8;--card:#ffffff;--accent:#0b5ed7;--muted:#6b7280}
-    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial}
-    
-    /* 🌟 FORM DITENGAH UNTUK DESKTOP */
-    body{
-      background:var(--bg);
-      display:flex;
-      justify-content:center;
-      align-items:flex-start;   /* tetap sedikit dari atas */
-      padding:40px 20px;
-      box-sizing:border-box;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Perbandingan Warna Benang (Dengan Kamera)</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f3f4f6;
+        padding: 20px;
     }
-
-    .container{max-width:1000px;width:100%}
-
-    .card{
-      background:white;
-      padding:16px;
-      border-radius:10px;
-      width:100%;
-      margin:0 auto;
-      box-sizing:border-box;
+    .box {
+        background: white;
+        padding: 16px;
+        border-radius: 10px;
+        max-width: 420px;
+        margin: auto;
+        box-shadow: 0 3px 10px rgba(0,0,0,0.1);
     }
-
-    h1{margin:0 0 12px;font-size:20px}
-    p.lead{margin:0 0 18px;color:var(--muted)}
-
-    form .grid{
-      display:flex;
-      flex-direction:column;
-      gap:14px;
-      width:100%;
+    .color-preview {
+        width: 100%;
+        height: 90px;
+        border-radius: 8px;
+        margin-top: 8px;
     }
-
-    label{display:block;font-size:13px;margin-bottom:6px;color:#111827}
-
-    input[type=text], 
-    input[type=date], 
-    input[type=datetime-local], 
-    select, textarea{
-        width:100%;
-        padding:12px;
-        font-size:15px;
-        border-radius:6px;
-        box-sizing:border-box;
+    button {
+        padding: 10px;
+        width: 100%;
+        border: 0;
+        background: #2563eb;
+        color: white;
+        border-radius: 8px;
+        cursor: pointer;
+        margin-top: 12px;
     }
-
-    textarea{min-height:100px;resize:vertical}
-    .full{grid-column:1 / -1}
-    .muted{color:var(--muted);font-size:13px}
-
-    .actions{display:flex;gap:8px;justify-content:flex-end;margin-top:16px}
-    button{padding:10px 14px;border-radius:8px;border:0;background:var(--accent);color:white;font-weight:600;cursor:pointer}
-    .btn-secondary{background:#6b7280}
-    .small{padding:8px 10px;font-size:13px}
-
-    .section{border-top:1px dashed #e6e9ee;padding-top:14px;margin-top:14px}
-    .two-col{display:flex;gap:12px}
-
-    .sig{border:1px dashed #d1d5db;border-radius:6px;padding:12px;text-align:center;background:#fbfbfc}
-
-    .file-list{margin-top:8px;font-size:13px}
-
-    .status{display:inline-block;padding:6px 10px;border-radius:999px;font-size:13px}
-
-    /* MOBILE ≤ 720px */
-    @media (max-width:720px){
-      body{padding:10px;display:block}
-      .card{padding:12px;border-radius:8px}
-      form .grid{gap:12px}
-      label{font-size:14px}
-      input, select, textarea{padding:10px;font-size:14px}
-      .two-col{flex-direction:column}
-      .sig{width:100%}
-      .actions{flex-direction:column-reverse;align-items:stretch;margin-top:18px}
-      button{width:100%;padding:12px;font-size:15px}
+    .cam-btn {
+        background: #10b981;
+        margin-top: 6px;
     }
-
-    /* Xiaomi viewport fix */
-    @media (max-width:400px){
-      body{padding:6px}
-      .card{padding:10px}
-      form .grid{gap:10px}
-      input, select, textarea{font-size:13.5px;padding:10px}
-      label{font-size:13px}
-      h1{font-size:17px}
-      button{font-size:14px;padding:11px}
-    }
-
-    /* PRINT */
-    @media print{
-      body{background:white;padding:0;display:block}
-      .actions, .no-print{display:none}
-      .card{box-shadow:none;border-radius:0}
-    }
-  </style>
+</style>
 </head>
 
 <body>
-  <div class="container">
-    <div class="card">
-      <h1>Form Non-Conforming Report (NCR)</h1>
-      <p class="lead">Form NCR: ketidaksesuaian saat penerimaan, penyimpanan, identifikasi, penanganan, atau pengeluaran material.</p>
+<div class="box">
+    <h3>Perbandingan Warna Cone Benang</h3>
 
-      <form id="ncrForm" autocomplete="off">
-        <div class="grid">
+    <!-- Foto Cone 1 -->
+    <label>Foto Cone 1:</label>
+    <input type="file" id="img1" accept="image/*">
+    <input type="file" id="cam1" accept="image/*" capture="environment" class="cam-btn">
 
-          <div>
-            <label for="ncr_number">Nomor NCR</label>
-            <input type="text" id="ncr_number" name="ncr_number" placeholder="contoh: NCR-2025-001" required />
-          </div>
+    <!-- Foto Cone 2 -->
+    <label>Foto Cone 2:</label>
+    <input type="file" id="img2" accept="image/*">
+    <input type="file" id="cam2" accept="image/*" capture="environment" class="cam-btn">
 
-          <div>
-            <label for="date_report">Tanggal Laporan</label>
-            <input type="date" id="date_report" name="date_report" required />
-          </div>
+    <button onclick="compareColors()">Bandingkan Warna</button>
 
-          <div>
-            <label for="department">Departemen / Area</label>
-            <input type="text" id="department" name="department" placeholder="Departemen terkait" required />
-          </div>
+    <h4>Hasil:</h4>
 
-          <div>
-            <label for="material_name">Nama Material</label>
-            <input type="text" id="material_name" name="material_name" placeholder="mis. Cotton 30s, Polyester" required />
-          </div>
+    <div>Warna Cone 1:</div>
+    <div id="color1" class="color-preview"></div>
+    <div id="hex1"></div>
 
-          <div>
-            <label for="supplier">Supplier / Vendor</label>
-            <input type="text" id="supplier" name="supplier" placeholder="Nama supplier" required />
-          </div>
+    <br>
 
-          <div class="full">
-            <label for="description">Deskripsi Ketidaksesuaian</label>
-            <textarea id="description" name="description" required></textarea>
-          </div>
+    <div>Warna Cone 2:</div>
+    <div id="color2" class="color-preview"></div>
+    <div id="hex2"></div>
 
-          <div class="full">
-            <label for="immediate_action">Tindakan Segera (Containment)</label>
-            <textarea id="immediate_action" name="immediate_action" required></textarea>
-          </div>
+    <h3 id="similarity"></h3>
 
-          <div>
-            <label for="qty_received">Jumlah Diterima</label>
-            <input type="text" id="qty_received" name="qty_received" required />
-          </div>
-
-          <div>
-            <label for="evidence">Bukti (ref / file)</label>
-            <input type="file" id="evidence" name="evidence" multiple />
-            <div id="fileList" class="file-list muted"></div>
-          </div>
-
-          <div class="full section">
-            <label for="root_cause">Analisis Akar Masalah</label>
-            <textarea id="root_cause" name="root_cause" required></textarea>
-          </div>
-
-          <div>
-            <label for="corrective_action">Rencana Tindakan Korektif</label>
-            <textarea id="corrective_action" name="corrective_action" required></textarea>
-          </div>
-
-          <div>
-            <label for="responsible">Penanggung Jawab</label>
-            <input type="text" id="responsible" name="responsible" required />
-          </div>
-
-          <div>
-            <label for="target_date">Target Penyelesaian</label>
-            <input type="date" id="target_date" name="target_date" required />
-          </div>
-
-          <div>
-            <label for="status">Status</label>
-            <select id="status" name="status">
-              <option>Open</option>
-              <option>In Progress</option>
-              <option>Completed</option>
-              <option>Verified</option>
-              <option>Closed</option>
-            </select>
-          </div>
-
-          <div class="full section">
-            <label for="verification">Verifikasi & Validasi</label>
-            <textarea id="verification" name="verification"></textarea>
-          </div>
-
-          <div class="full">
-            <label>Sign-off</label>
-            <div class="two-col">
-              <div class="sig" style="flex:1">
-                <div class="muted">Diverifikasi Oleh</div>
-                <div style="margin-top:10px"><input type="text" id="verified_by" name="verified_by" /></div>
-                <div style="margin-top:8px"><input type="date" id="verified_date" name="verified_date" /></div>
-              </div>
-              <div class="sig" style="flex:1">
-                <div class="muted">Disetujui Oleh</div>
-                <div style="margin-top:10px"><input type="text" id="approved_by" name="approved_by" /></div>
-                <div style="margin-top:8px"><input type="date" id="approved_date" name="approved_date" /></div>
-              </div>
-            </div>
-          </div>
-
-        </div>
-
-        <div class="actions no-print">
-          <button type="button" id="saveBtn" class="small">Simpan Draf</button>
-          <button type="button" id="printBtn" class="small">Cetak / Print</button>
-          <button type="submit" id="submitBtn" class="small">Submit NCR</button>
-        </div>
-      </form>
-
-      <div style="margin-top:12px;color:var(--muted);font-size:13px">
-        Catatan: Form ini adalah template untuk mendukung ISO 9001. Pastikan proses pengendalian dokumen dan tindakan korektif mengikuti prosedur internal.
-      </div>
-    </div>
-  </div>
+    <canvas id="canvas" style="display:none;"></canvas>
+</div>
 
 <script>
-const form = document.getElementById('ncrForm');
-const fileInput = document.getElementById('evidence');
-const fileList = document.getElementById('fileList');
-const saveBtn = document.getElementById('saveBtn');
-const printBtn = document.getElementById('printBtn');
+// Ambil warna dominan
+function getDominantColor(img) {
+    return new Promise((resolve) => {
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
 
-fileInput.addEventListener('change', ()=>{
-  const names = Array.from(fileInput.files).map(f=>f.name);
-  fileList.textContent = names.length ? names.join(', ') : 'Tidak ada file terlampir';
-});
+        img.onload = function() {
+            canvas.width = img.width;
+            canvas.height = img.height;
 
-saveBtn.addEventListener('click', ()=>{
-  const data = new FormData(form);
-  const obj = {};
-  data.forEach((v,k)=>{ obj[k]=v instanceof File ? v.name : v; });
-  obj._savedAt = new Date().toISOString();
-  localStorage.setItem('ncr_draft', JSON.stringify(obj));
-  alert('Draf tersimpan di browser.');
-});
+            ctx.drawImage(img, 0, 0);
 
-window.addEventListener('load', ()=>{
-  try{
-    const raw = localStorage.getItem('ncr_draft');
-    if(raw){
-      const obj = JSON.parse(raw);
-      Object.keys(obj).forEach(k=>{
-        const el = document.querySelector('[name="'+k+'"]');
-        if(el && el.type !== 'file') el.value = obj[k];
-      });
-      if(obj.evidence) fileList.textContent = obj.evidence;
-    }
-  }catch(e){}
-});
+            const data = ctx.getImageData(0, 0, img.width, img.height).data;
 
-printBtn.addEventListener('click', ()=> window.print());
+            let r = 0, g = 0, b = 0, count = 0;
 
-form.addEventListener('submit', (e)=>{
-  e.preventDefault();
-  const required = ['ncr_number','date_report','reporter','department','description','immediate_action','root_cause','corrective_action','responsible','target_date'];
-  for(const id of required){
-    const el = document.getElementById(id);
-    if(!el.value.trim()){
-      alert('Field wajib belum terisi: ' + el.previousElementSibling.textContent);
-      el.focus(); return;
-    }
-  }
+            // sampling pixel
+            for (let i = 0; i < data.length; i += 40) {
+                r += data[i];
+                g += data[i+1];
+                b += data[i+2];
+                count++;
+            }
 
-  const payload = {};
-  new FormData(form).forEach((v,k)=> payload[k]= v instanceof File ? v.name : v);
-  payload.submittedAt = new Date().toISOString();
+            resolve({
+                r: Math.round(r/count),
+                g: Math.round(g/count),
+                b: Math.round(b/count)
+            });
+        };
+    });
+}
 
-  const listRaw = localStorage.getItem('ncr_list') || '[]';
-  const list = JSON.parse(listRaw);
-  list.push(payload);
-  localStorage.setItem('ncr_list', JSON.stringify(list));
+// RGB ke Hex
+function rgbToHex({r,g,b}) {
+    return "#" + [r,g,b].map(x => x.toString(16).padStart(2, '0')).join("");
+}
 
-  alert('NCR berhasil disimpan.');
-  form.reset();
-  fileList.textContent = '';
-});
+// Mengukur jarak warna
+function colorDistance(c1, c2) {
+    return Math.sqrt(
+        (c1.r - c2.r)**2 +
+        (c1.g - c2.g)**2 +
+        (c1.b - c2.b)**2
+    );
+}
+
+// Aksi utama
+async function compareColors() {
+    const f1 = document.getElementById("img1").files[0] || document.getElementById("cam1").files[0];
+    const f2 = document.getElementById("img2").files[0] || document.getElementById("cam2").files[0];
+
+    if (!f1 || !f2) return alert("Ambil atau upload 2 foto terlebih dahulu.");
+
+    const img1 = new Image();
+    const img2 = new Image();
+
+    img1.src = URL.createObjectURL(f1);
+    img2.src = URL.createObjectURL(f2);
+
+    const color1 = await getDominantColor(img1);
+    const color2 = await getDominantColor(img2);
+
+    const hex1 = rgbToHex(color1);
+    const hex2 = rgbToHex(color2);
+
+    document.getElementById("color1").style.background = hex1;
+    document.getElementById("color2").style.background = hex2;
+    document.getElementById("hex1").innerHTML = hex1;
+    document.getElementById("hex2").innerHTML = hex2;
+
+    const diff = colorDistance(color1, color2);
+
+    let percent = Math.max(0, 100 - (diff / 4));
+
+    let status = "";
+    if (percent > 90) status = "Sangat Mirip";
+    else if (percent > 75) status = "Mirip";
+    else if (percent > 55) status = "Cukup Mirip";
+    else status = "Berbeda Jauh";
+
+    document.getElementById("similarity").innerHTML =
+        `Kemiripan: ${percent.toFixed(1)}% — <b>${status}</b>`;
+}
 </script>
 
 </body>
